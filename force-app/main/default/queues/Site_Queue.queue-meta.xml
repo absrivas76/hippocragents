@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Site Queue</name>
+    <queueMembers>
+        <users>
+            <user>agentforce_voice_agent@00dak00000ofkkl668564677.ext</user>
+            <user>oncoassist@00dak00000ofkkl768878880.ext</user>
+            <user>epic.0aeaa9a82a4f@orgfarm.salesforce.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Site_Agent_Config</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>MessagingSession</sobjectType>
+    </queueSobject>
+</Queue>
