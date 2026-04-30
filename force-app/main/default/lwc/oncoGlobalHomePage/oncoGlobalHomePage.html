@@ -1,0 +1,174 @@
+<template>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            
+                <!-- LEFT -->
+            <div class="brand">
+                <img src={healthLogoUrl} alt="Onco Global Logo" class="brand-logo" />
+
+                <lightning-button-icon
+                    class="mobile-menu-toggle"
+                    icon-name={menuIconName}
+                    size="large"
+                    alternative-text="Toggle navigation menu"
+                    variant="bare-inverse"
+                    onclick={toggleMobileMenu}>
+                </lightning-button-icon>
+            </div>
+
+            <!-- CENTER -->
+            <nav class={navClass}>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#">Home</a></li>
+                    <li class="nav-item"><a href="#">About</a></li>
+                    <li class="nav-item"><a href="#">Services</a></li>
+                    <li class="nav-item"><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- RIGHT -->
+            <div class="header-actions">
+                <button class="btn"  onclick={navigateToLogin}>
+                    Login / Register
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" >
+        <div class="container hero-inner hero-text-left">
+            <h2 class="hero-title">Welcome to Onco Global</h2>
+            <h3 class="hero-subtitle">Advancing Cancer Care in India</h3>
+            <p class="hero-sub">
+                Simplifying cancer care with intelligent scheduling, personalized navigation, 
+                and seamless access to oncology specialists across our network of hospitals.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container features-inner">
+
+            <div class="feature-card">
+                <img src={doctorIcon} alt="Specialist Discovery" />
+                <h4>Find the Right Specialist</h4>
+                <p>
+                    Discover oncology specialists across departments and locations tailored to your needs.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <img src={careIcon} alt="Smart Scheduling" />
+                <h4>Smart Appointment Scheduling</h4>
+                <p>
+                    Book, reschedule, or cancel appointments seamlessly with AI-powered assistance.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <img src={supportIcon} alt="Digital Engagement" />
+                <h4>Digital Patient Engagement</h4>
+                <p>
+                    Get reminders and support via web and WhatsApp to reduce missed appointments.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container about-inner">
+
+            <div class="about-content">
+                <span class="about-tag">ABOUT US</span>
+
+                <h2 class="about-title">
+                    Transforming Cancer Care<br />with Digital Innovation
+                </h2>
+
+                <p class="about-desc">
+                    Onco Global is a leading cancer care network in India with 10+ hospitals and over 500,000 patients. 
+                    Our AI-driven Patient Scheduling Agent acts as a digital front door, enabling patients to easily 
+                    discover specialists, navigate care pathways, and manage appointments without delays.
+                </p>
+
+                <div class="about-features">
+                    <div class="about-item">• Oncology specialist discovery</div>
+                    <div class="about-item">• Multi-hospital scheduling</div>
+                    <div class="about-item">• AI-powered patient support</div>
+                    <div class="about-item">• Reduced wait times & no-shows</div>
+                </div>
+            </div>
+
+            <div class="about-image">
+                <img src={doctorImage} alt="Doctor" />
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container testimonials-inner">
+
+            <div class="testimonials-content">
+                <span class="testimonials-tag">TESTIMONIALS</span>
+                <h2 class="testimonials-title">Patient Experiences</h2>
+                <p class="testimonials-desc">
+                    Real stories from patients who benefited from seamless cancer care and scheduling.
+                </p>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    {currentTestimonial.text}
+                </p>
+
+                <div class="testimonial-user">
+                    <img src={currentTestimonial.image} alt={currentTestimonial.name} />
+                    <div>
+                        <h4>{currentTestimonial.name}</h4>
+                        <span>{currentTestimonial.role}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-nav">
+                <button class="nav-btn" onclick={prevTestimonial}>‹</button>
+                <button class="nav-btn active" onclick={nextTestimonial}>›</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="services-header">
+            <span class="section-tag">
+                <!-- <img src={ecgImg} alt="ECG" class="process-ecg"/> -->
+                <span>OUR SERVICES</span>
+            </span>
+            <h2>Cancer Care Services</h2>
+        </div>
+
+        <div class="services-wrapper">
+
+            <div class="service-card">
+                <div class="service-icon emoji">🧬</div>
+                <h3>Cancer Treatment</h3>
+                <p>
+                    Comprehensive oncology care including diagnosis, treatment planning, 
+                    and continuous patient support across our hospital network.
+                </p>
+                <a href="#">Read More</a>
+            </div>
+        </div>
+
+    </section>
+
+</template>
