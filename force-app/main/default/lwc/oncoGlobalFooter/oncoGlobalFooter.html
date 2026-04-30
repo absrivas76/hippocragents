@@ -1,0 +1,58 @@
+<template>
+    <footer class="footer">
+        <div class="container footer-grid">
+            <!-- Brand Section -->
+            <div class="footer-brand">
+                <!-- <div class="footer-logo">♥️</div> -->
+                <img src={healthLogoUrl} alt="Health Logo" class="footer-logo" />
+                <p class="footer-text">
+
+                    Onco Global is redefining cancer care with AI-powered patient scheduling, seamless digital engagement, and faster access to life-saving treatments.
+                </p>
+            </div>
+            <!-- Company Section -->
+            <div class="footer-section company-info">
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-list">
+                    <li><a href="javascript:void(0)">About Onco Global</a></li>
+                    <li><a href="javascript:void(0)">Our Hospitals</a></li>
+                    <li><a href="javascript:void(0)">Contact Support</a></li>
+                </ul>
+            </div>
+            <!-- Resources Section -->
+            <div class="footer-section resources-info">
+                <h3 class="footer-title">Resources</h3>
+                <ul class="footer-list">
+                    <li><a href="javascript:void(0)">AI Scheduling Guide</a></li>
+                    <li><a href="javascript:void(0)">Patient Journey</a></li>
+                    <li><a href="javascript:void(0)">FAQs</a></li>
+                </ul>
+            </div>
+            <!-- Legal Section -->
+            <div class="footer-section legal-info">
+                <h3 class="footer-title">Legal</h3>
+                <ul class="footer-list">
+                    <li><a href="javascript:void(0)">Privacy Policy</a></li>
+                    <li><a href="javascript:void(0)">Terms of Service</a></li>
+                    <li><a href="javascript:void(0)">Disclaimer</a></li>
+                </ul>
+            </div>
+            <!-- Newsletter Section -->
+            <div class="footer-newsletter">
+                    <h3 class="footer-title">Subscribe</h3>
+                <p class="footer-text-small"> Get updates on appointments, treatments, and AI-powered care assistance.</p>
+                <div class="newsletter-input-wrap">
+                    <input type="email" placeholder="Enter your email" class="newsletter-input" value={email}
+                        oninput={handleEmailChange} />
+                    <button class="newsletter-btn" onclick={handleSubscribe}>
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+            <p>©️ 2026 Onco Global. AI-driven cancer care platform. All rights reserved.</p>
+        </div>
+    </footer>
+</template>

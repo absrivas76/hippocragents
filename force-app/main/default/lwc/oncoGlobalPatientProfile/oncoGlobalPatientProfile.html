@@ -1,0 +1,211 @@
+<template>
+    <section class="dashboard">
+        <div class="container">
+            <!-- HEADER (reuse same structure as homepage) -->
+            <header class="header">
+                <div class="container header-inner">
+                    
+                    <div class="brand">
+                        <img src={healthLogoUrl} class="brand-logo" />
+                    </div>
+
+                    <div class="header-actions">
+                        <button class="logout-btn">Logout</button>
+                    </div>
+
+                </div>
+            </header>
+
+            <template if:true={isLoading}>
+                <div class="loading">Loading patient data...</div>
+            </template>
+            <!-- MAIN DASHBOARD -->
+            <section class="dashboard">
+
+                <div class="container">
+
+                    <!-- PATIENT CARD -->   
+                    <div class="patient-card">
+                        <div class="patient-info">
+                            <h2>{patientName}</h2>
+                            <p>Age: {age} | Gender: {gender}</p>
+                        </div>
+
+                        <div class="patient-status">
+                            <span class="status active">Under Treatment</span>
+                        </div>
+                    </div>
+
+                    <!-- APPOINTMENTS -->
+                    <div class="section">
+                        <h3>Upcoming Appointments</h3>
+
+                        <template for:each={appointments} for:item="appt">
+                            <div key={appt.id} class="card">
+                                <p><strong>{appt.date}</strong></p>
+                                <p>{appt.doctor}</p>
+                                <p>{appt.hospital}</p>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- ================= MEDICAL INFORMATION ================= -->
+                    <section class="medical-section">
+
+                        <div class="medical-header">
+                            <h2>Medical Overview</h2>
+
+                            <div class="scroll-buttons">
+                                <button onclick={scrollLeft}>‹</button>
+                                <button onclick={scrollRight}>›</button>
+                            </div>
+                        </div>
+
+                        <div class="tiles-wrapper">
+                            <div class="tiles" data-id="tilesContainer">
+
+                                <button class={medicationsTileClass} onclick={selectMedications}>
+                                    <span class="tile-icon">💊</span>
+                                    <span>Medications</span>
+                                </button>
+
+                                <button class={conditionsTileClass} onclick={selectConditions}>
+                                    <span class="tile-icon">🧬</span>
+                                    <span>Conditions</span>
+                                </button>
+
+                                <button class={allergiesTileClass} onclick={selectAllergies}>
+                                    <span class="tile-icon">⚠️</span>
+                                    <span>Allergies</span>
+                                </button>
+
+                                <button class={encountersTileClass} onclick={selectEncounters}>
+                                    <span class="tile-icon">📅</span>
+                                    <span>Encounters</span>
+                                </button>
+
+                                <button class={immunizationsTileClass} onclick={selectImmunizations}>
+                                    <span class="tile-icon">💉</span>
+                                    <span>Immunizations</span>
+                                </button>
+
+                                <button class={careplansTileClass} onclick={selectCarePlans}>
+                                    <span class="tile-icon">📋</span>
+                                    <span>Care Plans</span>
+                                </button>
+
+                                <button class={reportsTileClass} onclick={selectReports}>
+                                    <span class="tile-icon">📁</span>
+                                    <span>Reports</span>
+                                </button>
+
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <!-- ================= ACTIVE MEDICAL DATA ================= -->
+                    <section class="data-section">
+
+                        <div class="data-card">
+
+                            <!-- HEADER -->
+                            <div class="data-header">
+                                <h3>{activeCategoryLabel}</h3>
+                            </div>
+
+                            <!-- SEARCH -->
+                            <div class="search-box">
+                                <input 
+                                    type="text" 
+                                    placeholder="Search..." 
+                                    value={searchTerm}
+                                    oninput={handleSearch}
+                                />
+                            </div>
+
+                            <!-- LIST -->
+                            <div class="data-list">
+
+                                <!-- MEDICATIONS -->
+                                <template if:true={isMedications}>
+                                     <!-- DATA EXISTS -->
+                                    <template if:true={filteredMedications.length}>
+                                        <template for:each={filteredMedications} for:item="med">
+                                            <div key={med.id} class="list-item">
+
+                                                <div class="list-top">
+                                                    <span class="item-title">{med.name}</span>
+                                                    <span class="status">{med.status}</span>
+                                                </div>
+
+                                                <div class="list-meta">
+                                                    <span>Type: {med.type}</span>
+                                                    <span class={med.priorityClass}>Priority: {med.priority}</span>
+                                                </div>
+
+                                            </div>
+                                        </template>
+                                    </template>
+
+                                    <!-- NO DATA -->
+                                    <template if:false={filteredMedications.length}>
+                                        <div class="no-data">No records found</div>
+                                    </template>
+
+                                </template>
+
+                                <!-- CONDITIONS -->
+                                <template if:true={isConditions}>
+                                    <template for:each={filteredConditions} for:item="c">
+                                        <div key={c.id} class="list-item">
+                                            <div class="list-top">
+                                                <span class="item-title">{c.name}</span>
+                                                <span>{c.severity}</span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template if:false={filteredConditions.length}>
+                                        <div class="no-data">No records found</div>
+                                    </template>
+                                </template>
+
+
+                                <!-- ALLERGIES -->
+                                <template if:true={isAllergies}>
+                                    <template for:each={filteredAllergies} for:item="a">
+                                        <div key={a.id} class="list-item">
+                                            <div class="list-top">
+                                                <span class="item-title">{a.name}</span>
+                                                <span>{a.severity}</span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template if:false={filteredAllergies.length}>
+                                        <div class="no-data">No records found</div>
+                                    </template>
+                                </template>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- QUICK ACTIONS -->
+                    <div class="section actions">
+                        <button class="action-btn">Book Appointment</button>
+                        <button class="action-btn secondary">View Reports</button>
+                        <button class="action-btn outline">Contact Support</button>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- FOOTER -->
+        </div>
+    </section>   
+
+</template>

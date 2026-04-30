@@ -1,0 +1,152 @@
+<template>
+    <div class="auth-wrapper" style={bgStyle}>
+
+        <!-- LEFT SIDE -->
+        <div class="left-content">
+            <img src={logoUrl} class="hero-logo" />
+
+            <p class="hospital-sub">Advanced Cancer Care Network</p>
+            <p class="hospital-tagline">
+                Transforming Oncology with Digital Innovation <br/>
+                Seamless care. Faster access. Better outcomes.
+            </p>
+
+            <div class="benefits">
+                <h3>Patient Portal Access</h3>
+
+                <div class="benefit-item">
+                    <span class="tick">✔</span>
+                    <span>Find oncology specialists across hospitals</span>
+                </div>
+
+                <div class="benefit-item">
+                    <span class="tick">✔</span>
+                    <span>Book and manage appointments instantly</span>
+                </div>
+
+                <div class="benefit-item">
+                    <span class="tick">✔</span>
+                    <span>Track treatment journey and reports</span>
+                </div>
+
+                <div class="benefit-item">
+                    <span class="tick">✔</span>
+                    <span>Get reminders and care guidance</span>
+                </div>
+
+                <div class="benefit-item">
+                    <span class="tick">✔</span>
+                    <span>Access your complete health profile</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="auth-card">
+
+            <div class="form-card">
+                
+                <template if:true={errorMessage}>
+                    <div class="error-box">
+                        {errorMessage}
+                    </div>
+                </template>
+
+                <template if:true={successMessage}>
+                    <div class="success-box">
+                        {successMessage}
+                    </div>
+                </template>
+
+                <!-- TABS -->
+                <lightning-tabset variant="scoped">
+
+                    <!-- LOGIN TAB -->
+                    <lightning-tab label="Log In">
+
+                        <h2 class="form-title">Welcome to Onco Global</h2>
+                        <p class="form-subtitle">Log in to access the patient portal</p>
+
+                        <lightning-input 
+                            label="Username"
+                            value={loginEmail}
+                            onchange={handleLoginEmail}>
+                        </lightning-input>
+
+                        <lightning-input 
+                            type="password"
+                            label="Password"
+                            value={loginPassword}
+                            onchange={handleLoginPassword}>
+                        </lightning-input>
+
+                        <div class="forgot-link">
+                            <a onclick={forgotPassword}>Forgot password?</a>
+                        </div>
+
+                        <lightning-button 
+                            label="Log In"
+                            variant="brand"
+                            class="login-btn"
+                            onclick={submitLogin}>
+                        </lightning-button>
+
+                    </lightning-tab>
+
+                    <!-- REGISTER TAB -->
+                    <lightning-tab label="Register">
+
+                        <h2 class="form-title">Create Your Patient Account</h2>
+
+                        <lightning-input 
+                            label="First Name"
+                            name="firstName"
+                            value={regData.firstName}
+                            onchange={handleInput}>
+                        </lightning-input>
+
+                        <lightning-input 
+                            label="Last Name"
+                            name="lastName"
+                            value={regData.lastName}
+                            onchange={handleInput}>
+                        </lightning-input>
+
+                        <lightning-input 
+                            label="Email Address"
+                            name="regEmail"
+                            value={regData.regEmail}
+                            onchange={handleInput}>
+                        </lightning-input>
+
+                        <lightning-input 
+                            label="Phone Number"
+                            name="phone"
+                            value={regData.phone}
+                            onchange={handleInput}>
+                        </lightning-input>
+
+                        <lightning-input 
+                            type="date"
+                            label="Date of Birth"
+                            name="dob"
+                            value={regData.dob}
+                            onchange={handleInput}>
+                        </lightning-input>
+
+
+                        <lightning-button 
+                            label="Register"
+                            variant="brand"
+                            class="btn-primary"
+                            onclick={submitRegister}>
+                        </lightning-button>
+
+                    </lightning-tab>
+
+                </lightning-tabset>
+
+            </div>
+        </div>
+    </div>
+</template>
