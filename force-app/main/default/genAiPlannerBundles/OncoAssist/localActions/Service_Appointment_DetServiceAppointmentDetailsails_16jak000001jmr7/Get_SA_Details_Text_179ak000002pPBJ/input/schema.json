@@ -1,0 +1,13 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "ServiceAppointmentNumber" : {
+      "title" : "ServiceAppointmentNumber",
+      "description" : "The unique ID of the appointment. If the user provides just the number (e.g., '0044'), prepend 'SA-' to match the Salesforce record format.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

@@ -1,0 +1,49 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "NewDateTime" : {
+      "title" : "NewDateTime",
+      "description" : "The new date and time requested by the user for the appointment.",
+      "lightning:type" : "lightning__dateTimeStringType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "NewDoctorName" : {
+      "title" : "NewDoctorName",
+      "description" : "The name of the Doctor/Service Resource the user wants to assign (e.g., Dr. Pankaj Singh). Map doctor names here ONLY.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "NewHospitalName" : {
+      "title" : "NewHospitalName",
+      "description" : "The name of the Hospital or Service Territory (e.g., Care Hospital). DO NOT put doctor names in this field.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "NewStatus" : {
+      "title" : "NewStatus",
+      "description" : "The new status for the appointment (e.g., Canceled, Scheduled).",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "NewWorkTypeName" : {
+      "title" : "NewWorkTypeName",
+      "description" : "The type of surgery or checkup (e.g., Knee Surgery, Common Cold Checkup).",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "ServiceAppointmentNumber" : {
+      "title" : "ServiceAppointmentNumber",
+      "description" : "The SA number provided by the user. If they provide just a number like '44', pass '44'.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

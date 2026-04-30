@@ -1,0 +1,43 @@
+{
+  "required" : [ "AppointmentReason", "CustomerName", "DoctorName", "HospitalName", "ScheduleDateTime" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "AppointmentReason" : {
+      "title" : "AppointmentReason",
+      "description" : "It store what appointment is for or what is the purpose of appointment.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "CustomerName" : {
+      "title" : "CustomerName",
+      "description" : "Stores the customer's name in the required format. The name uses proper capitalization, where each word starts with a capital letter and the remaining letters are lowercase (for example: \"Yash Agarwal\").",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "DoctorName" : {
+      "title" : "DoctorName",
+      "description" : "Stores the doctor’s name in the required format. The name must begin with \"Dr.\" and use proper capitalization, where each word starts with a capital letter and the remaining letters are lowercase (for example: \"Dr. Mohan Prakash\").",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "HospitalName" : {
+      "title" : "HospitalName",
+      "description" : "Stores the hospital's name in the required format. The name uses proper capitalization, where each word starts with a capital letter and the remaining letters are lowercase (for example: \"Care Hospital\").",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "ScheduleDateTime" : {
+      "title" : "ScheduleDateTime",
+      "description" : "Stores the appointment schedule date and time.",
+      "lightning:type" : "lightning__dateTimeStringType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

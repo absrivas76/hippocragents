@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <description>This agent assists patients with managing their healthcare appointments. It can help patients book new appointments, reschedule existing appointments to a more convenient time, or cancel appointments they no longer need. The agent checks real-time provider availability, confirms booking details, and sends confirmation notifications to patients via their preferred channel.</description>
+    <localActionLinks>
+        <genAiFunctionName>AnswerQuestionsWithKnowledge_16jak000001jmr7</genAiFunctionName>
+    </localActionLinks>
+    <localTopicLinks>
+        <genAiPluginName>Create_Service_Appointment_Record_16jak000001jmr7</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>Modify_Service_Appointment_16jak000001jmr7</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>Service_Appointment_DetServiceAppointmentDetailsails_16jak000001jmr7</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>Service_Appointment_DetServiceAppointmentDetailsails_16jak000001jmr7</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Handles user requests to retrieve details of a service appointment based on the provided appointment number.</description>
+        <developerName>Service_Appointment_DetServiceAppointmentDetailsails_16jak000001jmr7</developerName>
+        <genAiPluginInstructions>
+            <description>Immediately ask the user for their Service Appointment Number.</description>
+            <developerName>instructions_0_1776843112211</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_0_1776843112211</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Do not ask for name, account, or any other details. Do not provide an introductory paragraph or multiple options.</description>
+            <developerName>instruction_1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 1</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When a user provides a service appointment number, validate the format of the number before proceeding.</description>
+            <developerName>instruction_2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 2</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Use the provided appointment number to look up the service appointment details.</description>
+            <developerName>instruction_3</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 3</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the appointment number is invalid or not found, inform the user and ask if they would like further assistance.</description>
+            <developerName>instruction_4</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 4</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Provide the user with all relevant details about the service appointment.</description>
+            <developerName>instruction_5</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 5</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Response Formatting: Use ONLY the FinalSummary output to reply to the user. Do not include any other fields or labels.</description>
+            <developerName>instruction_6</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 6</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Get_SA_Details_Text_179ak000002pPBJ</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Get_SA_Details_Text_179ak000002pPBJ</fullName>
+            <description>This flow takes an appointment number (like 1, SA-1, or SA-0001) and returns the appointment&apos;s status, subject, and description.</description>
+            <developerName>Get_SA_Details_Text_179ak000002pPBJ</developerName>
+            <invocationTarget>Get_SA_Details_Text</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>Get_SA_Details_Text</localDeveloperName>
+            <masterLabel>Get SA Details Text</masterLabel>
+            <progressIndicatorMessage>&quot;Fetching your appointment details...&quot;</progressIndicatorMessage>
+        </localActions>
+        <localDeveloperName>Service_Appointment_Det Service Appointment Detailsails</localDeveloperName>
+        <masterLabel>Service Appointment Details</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>My job is only to retrieve and provide information about a service appointment when the user provides a valid appointment number.</scope>
+    </localTopics>
+    <localTopics>
+        <fullName>Create_Service_Appointment_Record_16jak000001jmr7</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Use this subagent when the user wants to schedule, book, or create an appointment. This includes requests to set up an appointment with a doctor or hospital and provide details such as appointment reason, patient name, doctor name, hospital name, and appointment date and time. Use it for intents like &quot;schedule an appointment&quot;, &quot;book an appointment&quot;, &quot;create an appointment&quot;, or similar requests to arrange a new appointment. The subagent should collect missing details, format all names in proper capitalization, ensure the doctor name starts with &quot;Dr.&quot;, create the Service Appointment record, and return the Service Appointment Number.</description>
+        <developerName>Create_Service_Appointment_Record_16jak000001jmr7</developerName>
+        <genAiPluginInstructions>
+            <description>Use this subagent only when the user wants to schedule, book, or create a new appointment.</description>
+            <developerName>instruction_1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 1</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Collect the following required information from the user before creating the appointment:
+
+Patient Name
+Appointment Date and Time
+Doctor Name
+Hospital Name
+Purpose of Appointment
+
+Maintain the order and don&apos;t mention format for Appointment date and Time. Ask it one by one, that is after receiving response for previous one.</description>
+            <developerName>instruction_10</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 10</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If any required information is missing, ask clear follow-up questions to gather it before proceeding.</description>
+            <developerName>instruction_11</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 11</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Format all names using proper capitalization, where each word starts with a capital letter and the remaining letters are lowercase.
+
+Example: amit kumar sharma → Amit Kumar Sharma
+Example: city Care hospital → City Care Hospital</description>
+            <developerName>instruction_2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 2</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Ensure the Doctor Name always starts with Dr..
+If the user provides the name without Dr., add it.
+If the user says doctor mohan prakash, convert it to Dr. Mohan Prakash.
+Store the doctor’s name in the format Dr. Firstname Lastname.</description>
+            <developerName>instruction_3</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 3</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Confirm the details from user, before creating Service Appointment record.</description>
+            <developerName>instruction_4</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 4</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Once all required details are collected and formatted and confirmed, create the Service Appointment record.</description>
+            <developerName>instruction_5</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 5</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>After successful creation, tell only the Service Appointment Number to the user. And ask if user need further help.</description>
+            <developerName>instruction_6</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 6</masterLabel>
+            <sortOrder>7</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Do not use this subagent for canceling, rescheduling, updating, or viewing appointments unless it is specifically designed for those actions.</description>
+            <developerName>instruction_7</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 7</masterLabel>
+            <sortOrder>8</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>After the &apos;Create&apos; action runs successfully, use the data from the FinalSummary output variable to provide a single, informative paragraph to the user. Do not use bullet points or list individual fields; only show the pre-formatted paragraph.</description>
+            <developerName>instruction_8</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 8</masterLabel>
+            <sortOrder>9</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Unless specified otherwise, always assume the user&apos;s provided time is in India Standard Time (IST). Do not default to UTC.</description>
+            <developerName>instruction_9</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 9</masterLabel>
+            <sortOrder>10</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Don&apos;t mention the format when asking for appointment date and time</description>
+            <developerName>instructions_0_1776841151831</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_0_1776841151831</masterLabel>
+            <sortOrder>11</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Create_Service_Appointment_Record_179ak000002pMlJ</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Create_Service_Appointment_Record_179ak000002pMlJ</fullName>
+            <description>This action takes Appointment Reason like what the appointment is for, Customer Name, Doctor Name, Hospital Name and schedule date and time of the appointment from user, then creates a service appointment record and return the service appointment number. It is triggered when user ask to schedule appointment or create appointment.</description>
+            <developerName>Create_Service_Appointment_Record_179ak000002pMlJ</developerName>
+            <invocationTarget>Create_Service_Appointment_Record</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>Create_Service_Appointment_Record</localDeveloperName>
+            <masterLabel>Create Service Appointment Record</masterLabel>
+            <progressIndicatorMessage>Scheduling Appointment...</progressIndicatorMessage>
+            <source>Create_Service_Appointment_Record</source>
+        </localActions>
+        <localDeveloperName>Create_Service_Appointment_Record</localDeveloperName>
+        <masterLabel>Create Service Appointment Record</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>This subagent can schedule a new appointment by collecting the Appointment Reason, Patient Name, Doctor Name, Hospital Name, and appointment date and time from the user. It can normalize the input by formatting all names in proper capitalization and ensuring the Doctor Name begins with &quot;Dr.&quot;. After gathering the required details, it creates a Service Appointment record and returns the Service Appointment Number to the user. It can ask follow-up questions for any missing appointment details needed to complete the booking. Once the record is created, provide a complete confirmation summary to the user in a natural paragraph format.</scope>
+    </localTopics>
+    <localTopics>
+        <fullName>Modify_Service_Appointment_16jak000001jmr7</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Use this topic when a user wants to change, reschedule, cancel, or update an existing service appointment. This includes changing the date, time, status, doctor, hospital, or type of surgery/checkup.
+Use this topic when a user wants to change, update, reschedule, or cancel a specific Service Appointment. The appointment number will simply be a number.</description>
+        <developerName>Modify_Service_Appointment_16jak000001jmr7</developerName>
+        <genAiPluginInstructions>
+            <description>When asking for the appointment number, ask for the appointment number simply.</description>
+            <developerName>instructions_0_1776768421389</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_0_1776768421389</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Ask the user for the appointment ID or any relevant details to locate the appointment.</description>
+            <developerName>instructions_1_1776768421389</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_1_1776768421389</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Confirm the user&apos;s requested changes, such as rescheduling to a new date or time, canceling, or updating details.</description>
+            <developerName>instruction_1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 1</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Verify the availability of the requested changes before confirming them.</description>
+            <developerName>instruction_10</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 10</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the user does not have an appointment ID, request alternative identifying details such as email or phone number.</description>
+            <developerName>instruction_11</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 11</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Provide a summary of the updated appointment details once changes are made.</description>
+            <developerName>instruction_12</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 12</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Before calling the flow, confirm the changes with the user (e.g., &apos;You want to change SA-0004 to Friday at 2 PM, correct?&apos;).</description>
+            <developerName>instruction_13</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 13</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the user says &apos;I want to cancel,&apos; set the NewStatus input to &apos;Canceled&apos;.</description>
+            <developerName>instruction_14</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 14</masterLabel>
+            <sortOrder>7</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Always assume the user&apos;s time is in India Standard Time (IST) unless they say otherwise.</description>
+            <developerName>instruction_15</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 15</masterLabel>
+            <sortOrder>8</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>You have the authority to modify, reschedule, and cancel appointments using the provided action. When a user provides an SA number and a change, always use the &apos;Modify Service Appointment&apos; action.</description>
+            <developerName>instruction_2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 2</masterLabel>
+            <sortOrder>9</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the user wants to cancel, set the NewStatus input to &apos;Canceled&apos;.</description>
+            <developerName>instruction_3</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 3</masterLabel>
+            <sortOrder>10</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>You have the authority to modify, reschedule, or cancel appointments.</description>
+            <developerName>instruction_4</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 4</masterLabel>
+            <sortOrder>11</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Modify the Date and time according to the Indian Standard Time always</description>
+            <developerName>instruction_5</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 5</masterLabel>
+            <sortOrder>12</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>The appointment number will simply be a number.</description>
+            <developerName>instruction_6</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 6</masterLabel>
+            <sortOrder>13</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Timezone Rule: Always assume the patient is speaking in India Standard Time (IST). Do not convert the time to UTC yourself; let the &apos;Modify Service Appointment&apos; action handle the formatting.</description>
+            <developerName>instruction_7</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 7</masterLabel>
+            <sortOrder>14</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Format all names using proper capitalization, where each word starts with a capital letter and the remaining letters are lowercase.
+
+Example: amit kumar sharma → Amit Kumar Sharma
+Example: city Care hospital → City Care Hospital</description>
+            <developerName>instruction_8</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 8</masterLabel>
+            <sortOrder>15</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Ensure the Doctor Name always starts with Dr..
+If the user provides the name without Dr., add it.
+If the user says doctor mohan prakash, convert it to Dr. Mohan Prakash.
+Store the doctor’s name in the format Dr. Firstname Lastname.</description>
+            <developerName>instruction_9</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction 9</masterLabel>
+            <sortOrder>16</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Don&apos;t mention the format when asking for appointment date and time</description>
+            <developerName>instructions_0_1776841192389</developerName>
+            <language>en_US</language>
+            <masterLabel>instructions_0_1776841192389</masterLabel>
+            <sortOrder>17</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Modify_Service_Appointment_v2_179ak000002pNnp</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Modify_Service_Appointment_v2_179ak000002pNnp</fullName>
+            <description>Use this action to modify an existing Service Appointment. It can update the date/time, status (including cancellation), work type (surgery type), service territory (hospital), or the assigned doctor (service resource).</description>
+            <developerName>Modify_Service_Appointment_v2_179ak000002pNnp</developerName>
+            <invocationTarget>Modify_Service_Appointment</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>Modify_Service_Appointment_v2</localDeveloperName>
+            <masterLabel>Modify Service Appointment v2</masterLabel>
+            <progressIndicatorMessage>Updating appointment..</progressIndicatorMessage>
+            <source>Modify_Service_Appointment_v2</source>
+        </localActions>
+        <localDeveloperName>Modify_Service_Appointment</localDeveloperName>
+        <masterLabel>Modify Service Appointment</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>You can modify existing appointments. You MUST ask for the Service Appointment Number before making any changes. If they want to cancel, change the status to &apos;Canceled&apos;.</scope>
+    </localTopics>
+    <masterLabel>Onco Assist</masterLabel>
+    <plannerActions>
+        <fullName>AnswerQuestionsWithKnowledge_16jak000001jmr7</fullName>
+        <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+        <developerName>AnswerQuestionsWithKnowledge_16jak000001jmr7</developerName>
+        <invocationTarget>streamKnowledgeSearch</invocationTarget>
+        <invocationTargetType>standardInvocableAction</invocationTargetType>
+        <isConfirmationRequired>false</isConfirmationRequired>
+        <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+        <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+        <masterLabel>Answer Questions with Knowledge</masterLabel>
+        <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+        <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+    </plannerActions>
+    <plannerSurfaces>
+        <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+        <callRecordingAllowed>false</callRecordingAllowed>
+        <surface>SurfaceAction__Messaging</surface>
+        <surfaceType>Messaging</surfaceType>
+    </plannerSurfaces>
+    <plannerSurfaces>
+        <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+        <callRecordingAllowed>false</callRecordingAllowed>
+        <surface>SurfaceAction__CustomerWebClient</surface>
+        <surfaceType>CustomerWebClient</surfaceType>
+    </plannerSurfaces>
+    <plannerType>AiCopilot__ReAct</plannerType>
+    <ruleExpressions>
+        <conditions>
+            <leftOperand>isCustomerVerified</leftOperand>
+            <leftOperandType>Variable</leftOperandType>
+            <operator>equal</operator>
+            <rightOperandValue>true</rightOperandValue>
+        </conditions>
+        <expression>Verified_Customer</expression>
+        <expressionLabel>Verified Customer</expressionLabel>
+        <expressionName>Verified_Customer</expressionName>
+        <expressionType>sel</expressionType>
+    </ruleExpressions>
+</GenAiPlannerBundle>

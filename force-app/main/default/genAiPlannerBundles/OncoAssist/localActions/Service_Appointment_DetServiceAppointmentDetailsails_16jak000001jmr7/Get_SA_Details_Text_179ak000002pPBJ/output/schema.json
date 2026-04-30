@@ -1,0 +1,69 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "AppointmentDate" : {
+      "title" : "AppointmentDate",
+      "description" : "The scheduled start date and time of the medical appointment.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "DoctorName" : {
+      "title" : "DoctorName",
+      "description" : "The name of the healthcare professional (Service Resource) assigned to the appointment.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "HospitalName" : {
+      "title" : "HospitalName",
+      "description" : "The name of the hospital or service territory where the appointment is located.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "PatientName" : {
+      "title" : "PatientName",
+      "description" : "The full name of the patient (Account) associated with the appointment.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "ServiceAppointmentNumber" : {
+      "title" : "ServiceAppointmentNumber",
+      "description" : "The unique identification number for the service appointment (e.g., SA-0044).",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "ServiceAppointmentStatus" : {
+      "title" : "ServiceAppointmentStatus",
+      "description" : "The current lifecycle stage of the appointment (e.g., Scheduled, In Progress, Completed).",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "WorkType" : {
+      "title" : "WorkType",
+      "description" : "The specific type of medical procedure or consultation (e.g., Knee Surgery).",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

@@ -1,0 +1,33 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "ServiceAppointmentDescription" : {
+      "title" : "ServiceAppointmentDescription",
+      "description" : "The detailed description of the work to be performed for this appointment.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "ServiceAppointmentStatus" : {
+      "title" : "ServiceAppointmentStatus",
+      "description" : "The current progress status of the appointment, such as Scheduled, Dispatched, or Completed.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    },
+    "ServiceAppointmentSubject" : {
+      "title" : "ServiceAppointmentSubject",
+      "description" : "A brief summary or title of the service appointment task.\n",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true,
+      "copilotAction:useHydratedPrompt" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
